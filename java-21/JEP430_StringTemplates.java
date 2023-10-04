@@ -3,6 +3,7 @@ import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
+import static java.lang.StringTemplate.RAW;
 import static java.util.FormatProcessor.FMT;
 
 
@@ -22,7 +23,12 @@ public class JEP430_StringTemplates {
 
     static void interpolationUsingSTRProcessor(String coinName, LocalDate date, Double price){
 
+
         //Interpolation by relatively replacing each embedded expression
+        StringTemplate st = RAW."The price of \{ coinName } on \{ date } is $\{ price }";
+        System.out.println(STR.process(st));
+
+        //Same as above build from raw template processor
         System.out.println(STR. "The price of \{ coinName } on \{ date } is $\{ price }");
 
         //Using multiline text blocks
